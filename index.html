@@ -144,8 +144,8 @@
   .cat-panel.active{display:block}
   .cat-stitle{font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:1.5px;color:var(--mid);margin:24px 0 12px}
   .cat-stitle:first-child{margin-top:0}
-  .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px}
-  .cat-item{border:1.5px solid var(--gray);border-radius:14px;padding:14px 16px;text-decoration:none;color:var(--black);transition:all .18s;display:flex;flex-direction:column;gap:4px}
+  .cat-grid{columns:4;column-gap:10px}
+  .cat-item{border:1.5px solid var(--gray);border-radius:14px;padding:14px 16px;text-decoration:none;color:var(--black);transition:all .18s;display:block;break-inside:avoid;margin-bottom:10px}
   .cat-item:hover{border-color:var(--black);background:var(--black);color:var(--white);transform:translateY(-2px)}
   .ci-name{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:800}
   .ci-price{font-size:.78rem;font-weight:700;color:var(--mid)}
