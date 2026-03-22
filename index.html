@@ -299,11 +299,12 @@
   .testi-outer{position:relative}
   .testi-scroll{display:flex;gap:14px;overflow-x:auto;padding:4px 4px 16px;scrollbar-width:none;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
   .testi-scroll::-webkit-scrollbar{display:none}
-  .testi-fade-l,.testi-fade-r{position:absolute;top:0;bottom:16px;width:60px;pointer-events:none;z-index:2}
-  .testi-fade-l{left:0;background:linear-gradient(to right,var(--white),transparent)}
-  .testi-fade-r{right:0;background:linear-gradient(to left,var(--white),transparent)}
-  html.dark .testi-fade-l{background:linear-gradient(to right,#111111,transparent)}
-  html.dark .testi-fade-r{background:linear-gradient(to left,#111111,transparent)}
+  .testi-arrow{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;border:none;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:3;transition:.2s}
+  .testi-arrow:hover{background:rgba(0,0,0,.7)}
+  .testi-arrow-l{left:6px}
+  .testi-arrow-r{right:6px}
+  html.dark .testi-arrow{background:rgba(255,255,255,.25);color:#111}
+  html.dark .testi-arrow:hover{background:rgba(255,255,255,.5)}
   .testi-card{flex-shrink:0;width:300px;border:2px solid var(--black);border-radius:20px;padding:20px;text-decoration:none;color:var(--black);display:flex;flex-direction:column;gap:10px;transition:transform .2s,box-shadow .2s;scroll-snap-align:start}
   .testi-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.1);color:var(--black)}
   html.dark .testi-card{background:#1a1a1a;color:#f0f0f0;border-color:#f0f0f0}
@@ -714,8 +715,8 @@
     <h2 class="section-title reveal d1">Kata Mereka</h2>
     <p class="section-desc reveal d2">Lebih dari 700 pelanggan sudah merasakan — ini sebagian cerita mereka.</p>
     <div class="testi-outer reveal d2">
-      <div class="testi-fade-l"></div>
-      <div class="testi-scroll">
+      <button class="testi-arrow testi-arrow-l" onclick="scrollTesti(-1)">‹</button>
+      <div class="testi-scroll" id="testi-scroll">
 
         <a href="https://t.me/pesansuar/156" target="_blank" class="testi-card">
           <div class="testi-stars">★★★★★</div>
@@ -760,7 +761,7 @@
         </a>
 
       </div>
-      <div class="testi-fade-r"></div>
+      <<button class="testi-arrow testi-arrow-r" onclick="scrollTesti(1)">›</button>
     </div>
   </div>
 </section>
@@ -1084,6 +1085,10 @@
   function openLb(src){ document.getElementById('lb-img').src=src; document.getElementById('lb').classList.add('open'); document.body.style.overflow='hidden'; }
   function closeLb(){ document.getElementById('lb').classList.remove('open'); document.getElementById('lb-img').src=''; document.body.style.overflow=''; }
   document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLb(); });
+  function scrollTesti(dir){
+  var el=document.getElementById('testi-scroll');
+  if(el) el.scrollBy({left:dir*320,behavior:'smooth'});
+  }
 </script>
 </body>
 </html>
