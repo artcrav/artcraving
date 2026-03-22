@@ -1064,7 +1064,7 @@
       ? `Rush · ${selectedRushTier.desc} (${selectedRushTier.fee})`
       : 'Normal · 14 hari kerja';
 
-    const msg = `✦ ORDER CRAVING ART\n\nNama: ${name}\nTipe: ${typeLabel[selectedType]}\nItem: ${selectedItem}\nMode: ${modeStr}\nRequest: ${desc}${ref?'\nReferensi: '+ref:''}${notes?'\nCatatan: '+notes:''}`;
+    const msg = `✦ ORDER CRAVING ART\n\nNama: ${name}\nTipe: ${typeLabel[selectedType]}\nItem: ${selectedItem}\nMode: ${modeStr}\nRequest: ${desc}${ref?'\nReferensi: '+ref:''}${notes?'\nCatatan: '+notes:''}\n\nKirim ke: artcrav@gmail.com`;
 
     if (platform === 'telegram') {
       window.open(`https://t.me/jajanmurahbot?text=${encodeURIComponent(msg)}`, '_blank');
