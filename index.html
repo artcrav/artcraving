@@ -1072,7 +1072,7 @@
       window.open(`https://wa.me/6285755055919?text=${encodeURIComponent(msg)}`, '_blank');
     } else if (platform === 'email') {
       const subject = `Order Craving ART — ${selectedItem}`;
-      window.open(`mailto:artcrav@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg)}`, '_blank');
+      window.location.href = `mailto:artcrav@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg)}`;
     }
   }
 </script>
