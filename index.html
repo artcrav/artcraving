@@ -162,8 +162,9 @@
   .ci-gallery:hover::after{background:rgba(0,0,0,.28)}
   .ci-zoom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.7);opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;z-index:3;color:#fff}
   .ci-gallery:hover .ci-zoom{opacity:1;transform:translate(-50%,-50%) scale(1)}
-  .ci-slide{display:none;width:100%}
+  .ci-slide{display:none;width:100%;animation:fadeIn .3s ease}
   .ci-slide.active{display:block}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   .ci-slide img{width:100%;height:auto;display:block}
   .ci-slide video{width:100%;height:auto;display:block}
   .ci-dots{position:absolute;bottom:5px;left:0;right:0;display:flex;justify-content:center;gap:4px;pointer-events:none;z-index:3}
