@@ -871,13 +871,14 @@
     document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('active'));
     document.querySelector('[onclick="switchTab(\''+id+'\')"]').classList.add('active');
     document.getElementById('panel-' + id).classList.add('active');
-    // clear and reinit gallery timers for new panel
     galTimers.forEach((timer) => clearInterval(timer));
     galTimers.clear();
     const panel = document.getElementById('panel-' + id);
     if (panel) {
       panel.querySelectorAll('.ci-gallery[data-total]').forEach(gal => {
-        setGalHeight(gal);
+        gal.dataset.cur = '0';
+        gal.querySelectorAll('.ci-slide').forEach((s,i) => s.classList.toggle('active', i===0));
+        gal.querySelectorAll('.ci-dot').forEach((d,i) => d.classList.toggle('active', i===0));
         const total = parseInt(gal.dataset.total);
         if (total > 1) {
           const gid = gal.dataset.id;
