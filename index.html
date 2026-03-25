@@ -342,9 +342,8 @@
   .testi-type{display:inline-block;font-size:.65rem;font-weight:800;padding:2px 8px;border-radius:20px;background:var(--black);color:var(--white);width:fit-content}
   html.dark .testi-type{background:#f0f0f0;color:#111}
   @media(max-width:560px){.testi-card{width:82vw}}
-  .lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;padding:16px}
-  .lb.open{display:flex}
-  .lb img{max-width:92vw;max-height:92vh;border-radius:12px;object-fit:contain;box-shadow:0 8px 40px rgba(0,0,0,.4)}
+  .lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;cursor:zoom-out;padding:24px 16px;overflow-y:auto}
+  .lb.open{display:flex;flex-direction:column;align-items:center;gap:16px}
 
 </style>
 </head>
@@ -1024,16 +1023,8 @@
   }
 
   function galClick(gal) {
-    const total = parseInt(gal.dataset.total);
-    if (total <= 1) {
-      const img = gal.querySelector('.ci-slide.active img');
-      if (img) openLb(img.src);
-      return;
-    }
-    galNext(gal);
-    const id = gal.dataset.id;
-    if (galTimers.has(id)) clearInterval(galTimers.get(id));
-    galTimers.set(id, setInterval(() => galNext(gal), 3200));
+  const imgs = [...gal.querySelectorAll('.ci-slide img')].map(i => i.src);
+  if (imgs.length) openLb(imgs);
   }
 
   function galNext(gal) {
@@ -1221,19 +1212,18 @@
     }
   }
 
-  function openLb(src){
-    const img = document.getElementById('lb-img');
-    img.style.display = 'block';
-    img.src = src;
-    document.getElementById('lb').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLb(){
-    document.getElementById('lb').classList.remove('open');
-    const img = document.getElementById('lb-img');
-    img.src = '';
-    img.style.display = 'none';
-    document.body.style.overflow = '';
+  function openLb(srcs){
+  const lb = document.getElementById('lb');
+  const list = Array.isArray(srcs) ? srcs : [srcs];
+  lb.innerHTML = list.map(s => `<img src="${s}" alt="" style="max-width:92vw;max-height:92vh;border-radius:12px;object-fit:contain;box-shadow:0 8px 40px rgba(0,0,0,.4);display:block">`).join('');
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb(){
+  const lb = document.getElementById('lb');
+  lb.classList.remove('open');
+  lb.innerHTML = '';
+  document.body.style.overflow = '';
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
   function scrollTesti(dir){
@@ -1243,7 +1233,6 @@
 </script>
 
 <div class="lb" id="lb" onclick="closeLb()">
-  <img id="lb-img" src="" alt="" style="display:none">
 </div>
 </body>
 </html>
