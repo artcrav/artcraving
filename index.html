@@ -85,14 +85,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999; /* sudah lebih tinggi dari nav (z-index: 100) ✅ */
+  z-index: 9999;
   transition: opacity 0.5s ease;
 }
 
 #splash img {
   width: 80px;
+  height: 80px;
   image-rendering: crisp-edges;
-  filter: none; /* paksa tidak ada filter */
+  filter: auto;
 }
   
   /* ── DARK TOGGLE */
@@ -448,7 +449,7 @@
   
 <!-- SPLASH SCREEN -->
 <div id="splash">
-  <img src="favicon.svg" alt="Logo">
+  <img src="favicon.svg" alt="Logo" width="80" height="80" decoding="sync" fetchpriority="high">
 </div>
   
 <!-- FLOATING ART PARTICLES -->
