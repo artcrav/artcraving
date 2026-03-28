@@ -77,6 +77,22 @@
   html.dark .btn-secondary:hover{background:#f0f0f0;color:#111}
   html.dark .link-card .licon{background:#333}
 
+  /* ── SPLASH SCREEN */
+  #splash {
+    position: fixed;
+    inset: 0;
+    background: #fff; /* sesuaikan warna background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+  }
+
+  #splash img {
+    width: 80px;
+  }
+  
   /* ── DARK TOGGLE */
   html.dark .dark-toggle:hover{opacity:.85}
   .dark-toggle{position:relative;width:72px;height:32px;border-radius:20px;border:2px solid var(--black);background:var(--black);cursor:pointer;margin-right:8px;flex-shrink:0;transition:background .3s,border-color .3s;overflow:hidden;display:flex;align-items:center;justify-content:center}
@@ -427,7 +443,12 @@
 </style>
 </head>
 <body>
-
+  
+<!-- SPLASH SCREEN -->
+<div id="splash">
+  <img src="favicon.svg" alt="Logo">
+</div>
+  
 <!-- FLOATING ART PARTICLES -->
 <div id="art-particles"><canvas id="particleCanvas"></canvas></div>
 
@@ -1561,5 +1582,13 @@
     draw();
   })();
 </script>
+<script>
+    window.addEventListener('load', () => {
+      const splash = document.getElementById('splash');
+      splash.style.opacity = '0';
+      setTimeout(() => splash.style.display = 'none', 500);
+    });
+</script>
+
 </body>
 </html>
