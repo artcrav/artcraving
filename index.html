@@ -79,19 +79,21 @@
 
   /* ── SPLASH SCREEN */
   #splash {
-    position: fixed;
-    inset: 0;
-    background: #fff; /* sesuaikan warna background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    transition: opacity 0.5s ease;
-  }
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* sudah lebih tinggi dari nav (z-index: 100) ✅ */
+  transition: opacity 0.5s ease;
+}
 
-  #splash img {
-    width: 80px;
-  }
+#splash img {
+  width: 80px;
+  image-rendering: crisp-edges;
+  filter: none; /* paksa tidak ada filter */
+}
   
   /* ── DARK TOGGLE */
   html.dark .dark-toggle:hover{opacity:.85}
