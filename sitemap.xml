@@ -7,14 +7,3 @@
   </url>
 </urlset>
 ```
-
-**2. Commit & push** file tersebut ke repository.
-
-**3. Cek apakah sudah bisa diakses** dengan buka browser ke:
-```
-https://artcraving.my.id/sitemap.xml
-```
-
-**4. Kalau sudah muncul**, baru submit ke Google Search Console:
-```
-sitemap.xml
