@@ -1027,7 +1027,7 @@
       </a>
 
       <!-- Email — sosial, no label on mobile -->
-      <a href="/cdn-cgi/l/email-protection#ddbcafa9beafbcab9dbab0bcb4b1f3beb2b0" class="link-icon-btn">
+      <a href="mailto: artcrav@gmail.com? subject=Custom20%Art20%Commission&body=Halo!%20Aku%20mau%20tanya-tanya%20soal%20jasa%20commission%20kamu%20nih!%20%E2%9C%A6" class="link-icon-btn">
         <div class="link-tooltip">Email</div>
         <div class="link-icon-face"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F2C6B4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
         <span class="link-icon-label">Email</span>
@@ -1469,6 +1469,7 @@
   function submitOrder(platform) {
     const name  = document.getElementById('of-name').value.trim();
     const desc  = document.getElementById('of-desc').value.trim();
+    const use  = document.getElementById('of-use').value.trim();
     const ref   = document.getElementById('of-ref').value.trim();
     const notes = document.getElementById('of-notes').value.trim();
     if (!selectedType)  { alert('Pilih tipe order dulu ya!'); return; }
@@ -1477,12 +1478,13 @@
     if (selectedMode === 'rush' && !selectedRushTier) { alert('Pilih tier rush dulu ya!'); return; }
     if (!name) { alert('Isi nama atau username kamu dulu!'); document.getElementById('of-name').focus(); return; }
     if (!desc) { alert('Isi detail request kamu dulu!');     document.getElementById('of-desc').focus(); return; }
-
+    if (!use) { alert('Isi penggunaan art dulu!');     document.getElementById('of-use').focus(); return; }
+  
     const modeStr = selectedMode === 'rush'
       ? `Rush · ${selectedRushTier.desc} (${selectedRushTier.fee})`
       : 'Normal · 14 hari kerja';
 
-    const msg = `✦ ORDER CRAVING ART\n\nNama: ${name}\nTipe: ${typeLabel[selectedType]}\nItem: ${selectedItem}\nMode: ${modeStr}\nRequest: ${desc}${ref?'\nReferensi: '+ref:''}${notes?'\nCatatan: '+notes:''}`;
+    const msg = `✦ ORDER CRAVING ART\n\nNama: ${name}\nTipe: ${typeLabel[selectedType]}\nItem: ${selectedItem}\nMode: ${modeStr}\nUse: ${use}\n${Request: ${desc}${ref?'\nReferensi: '+ref:''}${notes?'\nCatatan: '+notes:''}`;
 
     if (platform === 'telegram') {
       window.open(`https://t.me/jajanmurahbot?text=${encodeURIComponent(msg)}`, '_blank');
