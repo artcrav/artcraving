@@ -372,10 +372,12 @@
   /* labels always visible */
   .link-icon-label{display:block}
 
-  /* ── FLOAT BTN */
-  .float-btn{position:fixed;bottom:28px;right:24px;z-index:200;background:var(--black);color:var(--white);font-family:'Nunito',sans-serif;font-weight:900;font-size:.9rem;padding:14px 22px;border-radius:50px;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 8px 30px rgba(0,0,0,.22);transition:all .2s;animation:pulse 2.5s ease-in-out infinite}
-  .float-btn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 14px 40px rgba(0,0,0,.3)}
-
+  /* ── FLOAT BTN (OPTIMIZED) */
+  .float-btn{position:fixed;bottom:28px;right:24px;z-index:200;background:var(--black);color:var(--white);font-family:'Nunito',sans-serif;
+  font-weight:900;font-size:.9rem;padding:14px 22px;border-radius:50px;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 8px 30px rgba(0,0,0,.22);transition: transform .2s ease, box-shadow .2s ease;animation:pulse 3.5s ease-in-out infinite;will-change: transform;}
+  .float-btn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 12px 34px rgba(0,0,0,.28);}
+  .float-btn:active{transform:scale(.96);}
+  
   /* ── FOOTER */
   footer{background:linear-gradient(180deg,#1a1210 0%,#121a1a 100%);color:var(--white);padding:48px 24px;text-align:center;border-top:2px solid rgba(91,191,196,.25)}
   .f-logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.6rem;margin-bottom:8px}
@@ -387,7 +389,7 @@
 
   /* ── KEYFRAMES */
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-  @keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(91,191,196,.4)}50%{box-shadow:0 8px 44px rgba(247,160,160,.5)}}
+  @keyframes pulse{0%,100%{transform: scale(1);}50%{transform: scale(1.05);}}
   @media(max-width:640px){.hero h1{letter-spacing:-1px}}
   @media(max-width:480px){
     .hero-cta{gap:6px;flex-wrap:nowrap}
