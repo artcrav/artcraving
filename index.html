@@ -1992,7 +1992,7 @@ function fixDbCardRatios(containerEl) {
 
 // Quick picks & new arrivals cards
 function renderQuickCards() {
-  const ids = ['y2','y3','c4','c1','r1'];
+  const ids = ['y2','y3','c6','c4','c1'];
   const el = document.getElementById('quickCards');
   if(!el || !katItems.length) return;
   const picks = ids.map(id => katItems.find(i => i.id === id)).filter(Boolean);
@@ -2004,7 +2004,7 @@ function renderQuickCards() {
 }
 
 function renderNewCards() {
-  const ids = ['y10','y11','e1','j3'];
+  const ids = ['y10','y11','y6','y7'];
   const el = document.getElementById('newCards');
   if(!el || !katItems.length) return;
   const picks = ids.map(id => katItems.find(i => i.id === id)).filter(Boolean);
